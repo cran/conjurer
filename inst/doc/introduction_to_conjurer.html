@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Sidharth Macherla" />
+
+<meta name="date" content="2020-01-07" />
+
+<title>Introduction to conjurer</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+
+
+
+<style type="text/css">body {
+background-color: #fff;
+margin: 1em auto;
+max-width: 700px;
+overflow: visible;
+padding-left: 2em;
+padding-right: 2em;
+font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+font-size: 14px;
+line-height: 1.35;
+}
+#header {
+text-align: center;
+}
+#TOC {
+clear: both;
+margin: 0 0 10px 10px;
+padding: 4px;
+width: 400px;
+border: 1px solid #CCCCCC;
+border-radius: 5px;
+background-color: #f6f6f6;
+font-size: 13px;
+line-height: 1.3;
+}
+#TOC .toctitle {
+font-weight: bold;
+font-size: 15px;
+margin-left: 5px;
+}
+#TOC ul {
+padding-left: 40px;
+margin-left: -1.5em;
+margin-top: 5px;
+margin-bottom: 5px;
+}
+#TOC ul ul {
+margin-left: -2em;
+}
+#TOC li {
+line-height: 16px;
+}
+table {
+margin: 1em auto;
+border-width: 1px;
+border-color: #DDDDDD;
+border-style: outset;
+border-collapse: collapse;
+}
+table th {
+border-width: 2px;
+padding: 5px;
+border-style: inset;
+}
+table td {
+border-width: 1px;
+border-style: inset;
+line-height: 18px;
+padding: 5px 5px;
+}
+table, table th, table td {
+border-left-style: none;
+border-right-style: none;
+}
+table thead, table tr.even {
+background-color: #f7f7f7;
+}
+p {
+margin: 0.5em 0;
+}
+blockquote {
+background-color: #f6f6f6;
+padding: 0.25em 0.75em;
+}
+hr {
+border-style: solid;
+border: none;
+border-top: 1px solid #777;
+margin: 28px 0;
+}
+dl {
+margin-left: 0;
+}
+dl dd {
+margin-bottom: 13px;
+margin-left: 13px;
+}
+dl dt {
+font-weight: bold;
+}
+ul {
+margin-top: 0;
+}
+ul li {
+list-style: circle outside;
+}
+ul ul {
+margin-bottom: 0;
+}
+pre, code {
+background-color: #f7f7f7;
+border-radius: 3px;
+color: #333;
+white-space: pre-wrap; 
+}
+pre {
+border-radius: 3px;
+margin: 5px 0px 10px 0px;
+padding: 10px;
+}
+pre:not([class]) {
+background-color: #f7f7f7;
+}
+code {
+font-family: Consolas, Monaco, 'Courier New', monospace;
+font-size: 85%;
+}
+p > code, li > code {
+padding: 2px 0px;
+}
+div.figure {
+text-align: center;
+}
+img {
+background-color: #FFFFFF;
+padding: 2px;
+border: 1px solid #DDDDDD;
+border-radius: 3px;
+border: 1px solid #CCCCCC;
+margin: 0 5px;
+}
+h1 {
+margin-top: 0;
+font-size: 35px;
+line-height: 40px;
+}
+h2 {
+border-bottom: 4px solid #f7f7f7;
+padding-top: 10px;
+padding-bottom: 2px;
+font-size: 145%;
+}
+h3 {
+border-bottom: 2px solid #f7f7f7;
+padding-top: 10px;
+font-size: 120%;
+}
+h4 {
+border-bottom: 1px solid #f7f7f7;
+margin-left: 8px;
+font-size: 105%;
+}
+h5, h6 {
+border-bottom: 1px solid #ccc;
+font-size: 105%;
+}
+a {
+color: #0033dd;
+text-decoration: none;
+}
+a:hover {
+color: #6666ff; }
+a:visited {
+color: #800080; }
+a:visited:hover {
+color: #BB00BB; }
+a[href^="http:"] {
+text-decoration: underline; }
+a[href^="https:"] {
+text-decoration: underline; }
+
+code > span.kw { color: #555; font-weight: bold; } 
+code > span.dt { color: #902000; } 
+code > span.dv { color: #40a070; } 
+code > span.bn { color: #d14; } 
+code > span.fl { color: #d14; } 
+code > span.ch { color: #d14; } 
+code > span.st { color: #d14; } 
+code > span.co { color: #888888; font-style: italic; } 
+code > span.ot { color: #007020; } 
+code > span.al { color: #ff0000; font-weight: bold; } 
+code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61717; background-color: #e3d2d2; } 
+</style>
+
+
+
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Introduction to conjurer</h1>
+<h4 class="author">Sidharth Macherla</h4>
+<h4 class="date">2020-01-07</h4>
+
+
+
+<div id="overview" class="section level2">
+<h2>1.Overview</h2>
+<div id="background-motivation" class="section level3">
+<h3>1.1 Background &amp; Motivation</h3>
+<p>Data science applications need data to prototype and demonstrate to potential clients. For such purposes, using production data is a possibility. However, it is not always feasible due to legal and/or ethical considerations<span class="citation">(By Team Nuggets, <a href="#ref-SynDataNeed">n.d.</a>)</span>. This resulted in a need for generating synthetic data. This need is the key motivator for the package <strong>conjurer</strong>.</p>
+</div>
+<div id="need-for-package-conjurer" class="section level3">
+<h3>1.2 Need for package conjurer</h3>
+<p>Data across multiple domains are known to exhibit some form of seasonality, cyclicality and trend. Although there are synthetic data generation packages currently available, they focus primarily on synthetic versions of microdata containing confidential information or for machine learning purposes. There is a need for a more generic synthetic data generation package that helps for multiple purposes such as forecasting, customer segmentation, insight generation etc. This package <strong>conjurer</strong> helps in generating such synthetic data.</p>
+</div>
+</div>
+<div id="steps-to-build-synthetic-data" class="section level2">
+<h2>2.Steps to build synthetic data</h2>
+<p>Let us consider an example of generating transactional data for a retail store. The following steps will help in building such data.</p>
+<div id="installation" class="section level3">
+<h3>2.1 Installation</h3>
+<p>Install conjurer package by using the following code. Since the package uses base R functions, it does not have any dependencies.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="kw">install.packages</span>(<span class="st">&quot;conjurer&quot;</span>)</a></code></pre></div>
+</div>
+<div id="build-customers" class="section level3">
+<h3>2.2 Build customers</h3>
+<p>A customer is identified by a unique customer identifier(ID). A customer ID is alphanumeric with prefix “cust” followed by a numeric. This numeric ranges from 1 and extend to the number of customers provided as the argument within the function. For example, if there are 100 customers, then the customer ID will range from cust001 to cust100. This ensures that the customer ID is always of the same length. Let us build a group of customer IDs using the following code. For simplicity, let us assume that there are 100 customers. customer ID is built using the function buildCust. This function takes one argument “numOfCust” that specifies the number of customer IDs to be built.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">library</span>(conjurer)</a>
+<a class="sourceLine" id="cb2-2" data-line-number="2">customers &lt;-<span class="st"> </span><span class="kw">buildCust</span>(<span class="dt">numOfCust =</span>  <span class="dv">100</span>)</a>
+<a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">print</span>(<span class="kw">head</span>(customers))</a>
+<a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; [1] &quot;cust001&quot; &quot;cust002&quot; &quot;cust003&quot; &quot;cust004&quot; &quot;cust005&quot; &quot;cust006&quot;</span></a></code></pre></div>
+</div>
+<div id="build-products" class="section level3">
+<h3>2.2 Build products</h3>
+<p>The next step is building some products. A product is identified by a product ID. Similar to a customer ID, a product ID is also an alphanumeric with prefix “sku” which signifies a stock keeping unit. This prefix is followed by a numeric ranging from 1 and extending to the number of products provided as the argument within the function. For example, if there are 10 products, then the product ID will range from sku01 to sku10. This ensures that the product ID is always of the same length. Besides product ID, the product price range must be specified. Let us build a group of products using the following code. For simplicity, let us assume that there are 10 products and the price range for them is from 5 dollars to 50 dollars. Products are built using the function buildProd. This function takes 3 arguments as given below.</p>
+<ul>
+<li>numOfProd. This defines the number of product IDs to be generated.</li>
+<li>minPrice. This is the minimum value of the price range.</li>
+<li>maxPrice. This is the maximum value of the price range.</li>
+</ul>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">products &lt;-<span class="st"> </span><span class="kw">buildProd</span>(<span class="dt">numOfProd =</span> <span class="dv">10</span>, <span class="dt">minPrice =</span> <span class="dv">5</span>, <span class="dt">maxPrice =</span> <span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">print</span>(<span class="kw">head</span>(products))</a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;     SKU Price</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; 1 sku01 15.91</span></a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 2 sku02 39.75</span></a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 3 sku03 12.70</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 4 sku04 15.10</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 5 sku05 19.12</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 6 sku06  8.58</span></a></code></pre></div>
+</div>
+<div id="build-transactions" class="section level3">
+<h3>2.3 Build transactions</h3>
+<p>Now that a group of customer IDs and Products are built, the next step is to build transactions. Transactions are built using the function genTrans. This function takes 5 arguments. The details of them are as follows.</p>
+<ul>
+<li><strong>cylces</strong>. This represents the cyclicality of data. It can take the following values
+<ul>
+<li>“y”. If cycles is set to the value “y”, it means that there is only one instance of a high number of transactions during the entire year. This is a very common situation for some retail clients where the highest number of sales are during the holiday period in December.</li>
+<li>“q”. If cycles is set to the value “q”, it means that there are 4 instances of a high number of transactions. This is generally noticed in the financial services industry where the financial statements are revised every quarter and have an impact on the equity transactions in the secondary market.</li>
+<li>“m”. If cycles is set to the value “m”, it means that there are 12 instances of a high number of transactions for a year. This means that the number of transactions increases once every month and then subside for the rest of the month.</li>
+</ul></li>
+<li><strong>spike</strong>. This represents the seasonality of data. It can take any value from 1 to 12. These numbers represent months in an year, from January to December respectively. For example, if spike is set to 12, it means that December has the highest number of transactions.</li>
+<li>trend. This represents the slope of data distribution. It can take a value of 1 or -1.
+<ul>
+<li>If the trend is set to value 1, then the aggregated monthly transactions will exhibit an upward trend from January to December and vice versa if it is set to -1.</li>
+</ul></li>
+<li><strong>outliers</strong>. This signifies the presence of outliers. If set to value 1, then outliers are generated randomly. If set to value 0, then no outliers are generated. The presence of outliers is a very common occurrence and hence setting the outliers to 1 is recommended. However, there are instances where outliers are not needed. For example, if the objective of data generation is solely for visualization purposes then outliers may not be needed.</li>
+<li><strong>transactions</strong>. This represents the number of transactions to be generated.</li>
+</ul>
+<p>Let us build transactions using the following code</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">transactions &lt;-<span class="st"> </span><span class="kw">genTrans</span>(<span class="dt">cycles =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">spike =</span> <span class="dv">12</span>, <span class="dt">outliers =</span> <span class="dv">1</span>, <span class="dt">transactions =</span> <span class="dv">10000</span>)</a></code></pre></div>
+<p>Visualize generated transactions by using</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">TxnAggregated &lt;-<span class="st"> </span><span class="kw">aggregate</span>(transactions<span class="op">$</span>transactionID, <span class="dt">by =</span> <span class="kw">list</span>(transactions<span class="op">$</span>dayNum), length)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">plot</span>(TxnAggregated, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ann =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="build-final-data" class="section level3">
+<h3>2.4 Build final data</h3>
+<p>Bringing customers, products and transactions together is the final step of generating synthetic data. This process entails 3 steps as given below.</p>
+<div id="allocate-customers-to-transactions" class="section level4">
+<h4>2.4.1 Allocate customers to transactions</h4>
+<p>The allocation of transactions is achieved with the help of buildPareto function. This function takes 3 arguments as detailed below.</p>
+<ul>
+<li><strong>factor1</strong> and <strong>factor2</strong>. These are factors to be mapped to each other. As the name suggests, they must be of data type factor.</li>
+<li><strong>Pareto</strong>. This defines the percentage allocation and is a numeric data type. This argument takes the form of c(x,y) where x and y are numeric and their sum is 100. If we set Pareto to c(80,20), it then allocates 80 percent of factor1 to 20 percent of factor 2. This is based on a well-known concept of Pareto principle.</li>
+</ul>
+<p>Let us now allocate transactions to customers first by using the following code.</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">customer2transaction &lt;-<span class="st"> </span><span class="kw">buildPareto</span>(customers, transactions<span class="op">$</span>transactionID, <span class="dt">pareto =</span> <span class="kw">c</span>(<span class="dv">80</span>,<span class="dv">20</span>))</a></code></pre></div>
+<p>Assign readable names to the output by using the following code.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">names</span>(customer2transaction) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">'transactionID'</span>, <span class="st">'customer'</span>)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#inspect the output</span></a>
+<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="kw">print</span>(<span class="kw">head</span>(customer2transaction))</a>
+<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;   transactionID customer</span></a>
+<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; 1    txn-210-21  cust023</span></a>
+<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; 2     txn-44-01  cust054</span></a>
+<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; 3    txn-298-26  cust062</span></a>
+<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt; 4    txn-352-18  cust054</span></a>
+<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt; 5    txn-100-24  cust061</span></a>
+<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt; 6      txn-4-15  cust017</span></a></code></pre></div>
+</div>
+<div id="allocate-products-to-transactions" class="section level4">
+<h4>2.4.2 Allocate products to transactions</h4>
+<p>Now, using similar step as mentioned above, allocate transactions to products using following code.</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">product2transaction &lt;-<span class="st"> </span><span class="kw">buildPareto</span>(products<span class="op">$</span>SKU,transactions<span class="op">$</span>transactionID,<span class="dt">pareto =</span> <span class="kw">c</span>(<span class="dv">70</span>,<span class="dv">30</span>))</a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">names</span>(product2transaction) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">'transactionID'</span>, <span class="st">'SKU'</span>)</a>
+<a class="sourceLine" id="cb8-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#inspect the output</span></a>
+<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="kw">print</span>(<span class="kw">head</span>(product2transaction))</a>
+<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt;   transactionID   SKU</span></a>
+<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; 1    txn-134-12 sku05</span></a>
+<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; 2    txn-313-31 sku05</span></a>
+<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; 3    txn-305-20 sku09</span></a>
+<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; 4    txn-198-03 sku01</span></a>
+<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; 5    txn-282-20 sku01</span></a>
+<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; 6    txn-178-21 sku01</span></a></code></pre></div>
+</div>
+<div id="final-data" class="section level4">
+<h4>2.4.3 Final data</h4>
+<p>Now, using a similar step as mentioned above, allocate transactions to products using the following code.</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">df1 &lt;-<span class="st"> </span><span class="kw">merge</span>(<span class="dt">x =</span> customer2transaction, <span class="dt">y =</span> product2transaction, <span class="dt">by =</span> <span class="st">&quot;transactionID&quot;</span>)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3">dfFinal &lt;-<span class="st"> </span><span class="kw">merge</span>(<span class="dt">x =</span> df1, <span class="dt">y =</span> transactions, <span class="dt">by =</span> <span class="st">&quot;transactionID&quot;</span>, <span class="dt">all.x =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#inspect the output</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="kw">print</span>(<span class="kw">head</span>(dfFinal))</a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt;   transactionID customer   SKU dayNum mthNum</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt; 1      txn-1-01  cust054 sku01      1      1</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt; 2      txn-1-02  cust013 sku07      1      1</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt; 3      txn-1-03  cust087 sku05      1      1</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt; 4      txn-1-04  cust014 sku09      1      1</span></a>
+<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt; 5      txn-1-05  cust066 sku09      1      1</span></a>
+<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="co">#&gt; 6      txn-1-06  cust003 sku01      1      1</span></a></code></pre></div>
+<p>Thus, we have the final data set with transactions, customers and products.</p>
+</div>
+</div>
+</div>
+<div id="interpret-the-results" class="section level2">
+<h2>2.Interpret the results</h2>
+<p>The column names of the final data frame can be interpreted as follows. + Each row is a transaction and the data frame has all the transactions for a year i.e 365 days. + <strong>transactionID</strong> is the unique identifier for that transaction. + <strong>customer</strong> is the unique customer identifier. This is the customer who made that transaction. + <strong>SKU</strong> is the product that was bought in that transaction. + <strong>dayNum</strong> is the day number in the year. There would be 365 unique dayNum in the data frame. + <strong>mthNum</strong> is the month number. This ranges from 1 to 12 and represents January to December respectively.</p>
+<p>Let us visualize the results to understand the data distribution.</p>
+<p>Below is a view of the sum of transactions by each day.</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">aggregatedDataDay &lt;-<span class="st"> </span><span class="kw">aggregate</span>(dfFinal<span class="op">$</span>transactionID, <span class="dt">by =</span> <span class="kw">list</span>(dfFinal<span class="op">$</span>dayNum), length)</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">plot</span>(aggregatedDataDay, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ann =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p>Below is a view of the sum of transactions by each month.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">aggregatedDataMth &lt;-<span class="st"> </span><span class="kw">aggregate</span>(dfFinal<span class="op">$</span>transactionID, <span class="dt">by =</span> <span class="kw">list</span>(dfFinal<span class="op">$</span>mthNum), length)</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2">aggregatedDataMthSorted &lt;-<span class="st"> </span>aggregatedDataMth[<span class="kw">order</span>(aggregatedDataMth<span class="op">$</span>Group<span class="fl">.1</span>),]</a>
+<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="kw">plot</span>(aggregatedDataMthSorted, <span class="dt">ann =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="references" class="section level2 unnumbered">
+<h2>References</h2>
+<div id="refs" class="references">
+<div id="ref-SynDataNeed">
+<p>By Team Nuggets, Microsoft -. n.d. <a href="https://www.cbtnuggets.com/blog/certifications/microsoft/how-to-generate-dummy-data-for-your-database" class="uri">https://www.cbtnuggets.com/blog/certifications/microsoft/how-to-generate-dummy-data-for-your-database</a>.</p>
+</div>
+</div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
