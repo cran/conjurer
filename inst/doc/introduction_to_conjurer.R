@@ -13,6 +13,18 @@ customers <- buildCust(numOfCust =  100)
 print(head(customers))
 
 ## ---- eval=TRUE, echo=TRUE, results='markup'-----------------------------
+custNames <- as.data.frame(buildNames(numOfNames = 100, minLength = 5, maxLength = 7))
+
+#set column heading
+colnames(custNames) <- c("customerName")
+print(head(custNames))
+
+## ---- eval=TRUE, echo=TRUE, results='markup'-----------------------------
+customer2name <- cbind(customers, custNames)
+#set column heading
+print(head(customer2name))
+
+## ---- eval=TRUE, echo=TRUE, results='markup'-----------------------------
 products <- buildProd(numOfProd = 10, minPrice = 5, maxPrice = 50)
 print(head(products))
 
@@ -42,7 +54,13 @@ print(head(product2transaction))
 ## ---- eval=TRUE, echo=TRUE, results='markup'-----------------------------
 df1 <- merge(x = customer2transaction, y = product2transaction, by = "transactionID")
 
-dfFinal <- merge(x = df1, y = transactions, by = "transactionID", all.x = TRUE)
+df2 <- merge(x = df1, y = transactions, by = "transactionID", all.x = TRUE)
+
+#inspect the output
+print(head(df2))
+
+## ---- eval=TRUE, echo=TRUE, results='markup'-----------------------------
+dfFinal <- merge(x = df2, y = customer2name, by.x = "customer", by.y = "customers", all.x = TRUE)
 
 #inspect the output
 print(head(dfFinal))

@@ -12,7 +12,7 @@
 
 <meta name="author" content="Sidharth Macherla" />
 
-<meta name="date" content="2020-01-07" />
+<meta name="date" content="2020-03-14" />
 
 <title>Introduction to conjurer</title>
 
@@ -303,7 +303,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Introduction to conjurer</h1>
 <h4 class="author">Sidharth Macherla</h4>
-<h4 class="date">2020-01-07</h4>
+<h4 class="date">2020-03-14</h4>
 
 
 
@@ -333,6 +333,36 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb2-2" data-line-number="2">customers &lt;-<span class="st"> </span><span class="kw">buildCust</span>(<span class="dt">numOfCust =</span>  <span class="dv">100</span>)</a>
 <a class="sourceLine" id="cb2-3" data-line-number="3"><span class="kw">print</span>(<span class="kw">head</span>(customers))</a>
 <a class="sourceLine" id="cb2-4" data-line-number="4"><span class="co">#&gt; [1] &quot;cust001&quot; &quot;cust002&quot; &quot;cust003&quot; &quot;cust004&quot; &quot;cust005&quot; &quot;cust006&quot;</span></a></code></pre></div>
+<div id="build-customer-names" class="section level4">
+<h4>2.2.1 Build customer names</h4>
+<p>A list of customer names for the 100 customer IDs can be generated in the following way.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">custNames &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(<span class="kw">buildNames</span>(<span class="dt">numOfNames =</span> <span class="dv">100</span>, <span class="dt">minLength =</span> <span class="dv">5</span>, <span class="dt">maxLength =</span> <span class="dv">7</span>))</a>
+<a class="sourceLine" id="cb3-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#set column heading</span></a>
+<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw">colnames</span>(custNames) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;customerName&quot;</span>)</a>
+<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">print</span>(<span class="kw">head</span>(custNames))</a>
+<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;   customerName</span></a>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 1      alinden</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 2        salee</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 3       ballen</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; 4       daliel</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; 5      emenatr</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; 6        dalle</span></a></code></pre></div>
+</div>
+<div id="assign-customer-name-to-customer-id" class="section level4">
+<h4>2.2.2 Assign customer name to customer ID</h4>
+<p>Let us assign customer names to customer IDs. This is a random one to one mapping using the following code.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">customer2name &lt;-<span class="st"> </span><span class="kw">cbind</span>(customers, custNames)</a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#set column heading</span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">print</span>(<span class="kw">head</span>(customer2name))</a>
+<a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;   customers customerName</span></a>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; 1   cust001      alinden</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 2   cust002        salee</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 3   cust003       ballen</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 4   cust004       daliel</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 5   cust005      emenatr</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 6   cust006        dalle</span></a></code></pre></div>
+</div>
 </div>
 <div id="build-products" class="section level3">
 <h3>2.2 Build products</h3>
@@ -342,15 +372,15 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <li>minPrice. This is the minimum value of the price range.</li>
 <li>maxPrice. This is the maximum value of the price range.</li>
 </ul>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1">products &lt;-<span class="st"> </span><span class="kw">buildProd</span>(<span class="dt">numOfProd =</span> <span class="dv">10</span>, <span class="dt">minPrice =</span> <span class="dv">5</span>, <span class="dt">maxPrice =</span> <span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb3-2" data-line-number="2"><span class="kw">print</span>(<span class="kw">head</span>(products))</a>
-<a class="sourceLine" id="cb3-3" data-line-number="3"><span class="co">#&gt;     SKU Price</span></a>
-<a class="sourceLine" id="cb3-4" data-line-number="4"><span class="co">#&gt; 1 sku01 15.91</span></a>
-<a class="sourceLine" id="cb3-5" data-line-number="5"><span class="co">#&gt; 2 sku02 39.75</span></a>
-<a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt; 3 sku03 12.70</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 4 sku04 15.10</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 5 sku05 19.12</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 6 sku06  8.58</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">products &lt;-<span class="st"> </span><span class="kw">buildProd</span>(<span class="dt">numOfProd =</span> <span class="dv">10</span>, <span class="dt">minPrice =</span> <span class="dv">5</span>, <span class="dt">maxPrice =</span> <span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">print</span>(<span class="kw">head</span>(products))</a>
+<a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;     SKU Price</span></a>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; 1 sku01 40.64</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; 2 sku02 21.08</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; 3 sku03 10.22</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 4 sku04 16.23</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 5 sku05 34.40</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 6 sku06 20.19</span></a></code></pre></div>
 </div>
 <div id="build-transactions" class="section level3">
 <h3>2.3 Build transactions</h3>
@@ -371,11 +401,11 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <li><strong>transactions</strong>. This represents the number of transactions to be generated.</li>
 </ul>
 <p>Let us build transactions using the following code</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb4-1" data-line-number="1">transactions &lt;-<span class="st"> </span><span class="kw">genTrans</span>(<span class="dt">cycles =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">spike =</span> <span class="dv">12</span>, <span class="dt">outliers =</span> <span class="dv">1</span>, <span class="dt">transactions =</span> <span class="dv">10000</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">transactions &lt;-<span class="st"> </span><span class="kw">genTrans</span>(<span class="dt">cycles =</span> <span class="st">&quot;y&quot;</span>, <span class="dt">spike =</span> <span class="dv">12</span>, <span class="dt">outliers =</span> <span class="dv">1</span>, <span class="dt">transactions =</span> <span class="dv">10000</span>)</a></code></pre></div>
 <p>Visualize generated transactions by using</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">TxnAggregated &lt;-<span class="st"> </span><span class="kw">aggregate</span>(transactions<span class="op">$</span>transactionID, <span class="dt">by =</span> <span class="kw">list</span>(transactions<span class="op">$</span>dayNum), length)</a>
-<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">plot</span>(TxnAggregated, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ann =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASAAAAEgCAMAAAAjXV6yAAAASFBMVEUAAAAAADoAAGYAOpAAZrY6AAA6ADo6AGY6OpA6kNtmAABmtv+QOgCQ2/+2ZgC2///bkDrb2//b////tmb/25D//7b//9v///8SLmSYAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAHOUlEQVR4nO3djXqbRhCF4WmTNHXqOmpwvPd/p5X4XRDsGTAsCH3nSdVIGmbRa1iwIywLJBnbewWOHoBEABIBSAQgEYBEABIBSAQgEYBEABIBSAQgEYBEABIBSAQgEYBEABIBSAQgEYBEABIBSAQgEYBEABIBSAQgEYBEABIBSAQgEYBEABIBSAQgEYBEABIBSAQgEYBEABIBSAQgEYBEABIBSAQgEYBEABIBSAQgEYBEABIBSAQgEYBEABIBSAQgEYBEABIBSAQgEYBEABIBSAQgEYBEABIBSAQgkXlAH69W5s+fG63O8TIL6GIv1V+K5i/nzxygj9eW5fLl1wYrc8TMAfr945/mr8XT7GQrb0H2MNkC6DoH1ZvQ5Bz0MAfFbYCuO1nFPzkDPTtQ7nbbJTPQ/F07SxJrswnQ7x+3maewxIkiQNXxKzrgL2+3fRIb9GZANc3kYX5Gu+2zB9D7txJo6kQRILagRKqzoK+hma4/2W775AYKpdEf/ya+mXe1y6VoiZEOfaIIUN4xJ8cASIwBkBgDoNQYBlB6DIDEGA8EZMNnABp7DKDJdgCJdja47dZ7Q6l7oP43ZgA9ElCnYpmBejs2QMNBDwSU/FeNBNB2QgcDSrYDSLSbBFrp39FGX3gPqBr6AYHWGd4JNF43r/vnM9LOAkDJdgCNtIt3eIBG2gEk2lktUf1JA02ugUW3qfW8f+F2HqDhet/3AgggH9DIy4xu5wNVnbsWAMVL7gYkL0VwAHXz8vmA9KUIHZA9IZDnjeT1//pA3a11q91f755DvQHWtw3rxHjdOZe1qM149Vcl/vHi2NcjlTlAjksRnhto3S3IvECR6ch4FgPZvkD+SxEWAPXnnT7QcAKJx/MBWR4g96UIzTqNAJkPyKJbH5B1d6rRe0CWB8jbrv2SWTMxTALZCkDNXJUGqu/MfN3rAA1/aF+t4AhQd4YUmgN/DNTeDoEi1m7XbXi6ybyPVQ1kfaD+hrQJUGG3N3Km2pkPqC6tF0wBhVGgei+Oj3bNMtH6WLs9daNuBvRm9vL+9y91KUKzrg6gcCqgt+vk/FZuPenD/F5AYWegcrt5/+sGlD5RbGbkDij+E0aAejPE0DTcAdlRgW5nPx//BdcW1P7nBIrn3gRQsOMChUuz3YhLEbYDspao213j84VxoJALKFyqw1dhE3P00wM526WA2rK1gUIEFK+P1TsfQE8NFEaB+iYAhTMClXdTQCErkIV4VP8rWi0AudrVR3OAptrNBooMLFYYAlW1APmA7DxA7dnsXKB2M+kD2SygcDyg7k5936y7bcpGgKy9Hd4bALVfg7bHxJ17rbEVdb+iz6ffzqz3cG9VFwDZUwHdb01PCJQqG9ndejviuYCsjXvU5wKa224foPgZgO4HelSg7k4KKHSnmfFPEJsn43H7cgBFy9zfAShES47cOQlQN8+EJFBTAFD7aPzdCUAjTgCFwTG6e1QCTY17OqDBa+09GD1lAPVLVgHqb55xN9+KHgNovCQBNHgmPVJWIO+lCI5hlwBNPOMeaHMg96UIjmHPCOR/I7ljWFl5x3B8IP+lCI5hl09+xwXKuwWlFg7HBFrxUxE+D+Rs0B9o86PYap+KcFag1dp9CmhOpgbKDDT3h/ZPBzS7HUCy7oxAzRSd+GbjuYGuJ0LqU7PcQJl8cu9iH69f12l3VqDEe+zntTst0FrtAFJ1AIk6gEQdQKIOIFEHkKjLBjQxEEBiIIDakWY9/InCddsBpOoAOngAEgFIBCCR3YAeJjsBzW66e2nGVoua7l6asdWipruXZmy1qOnupRlbLWq6e2nGVoua7l6asdWipruXZmy1qOnupRlbLWq6e2nGVucMQCIAiQAkApAIQCIAiQAkApAIQCIAiQAkApDI+kCpT5Vo8v79Z690apnyIuIXV2m43FV41kRmdaDiuk6FWK/fP8p37LelU8t8vF4fvNhXR2n56+T7FZ410VkbqLps8y35hvyiutSjLZ1c5v3b7W3r15euS8vfsn+7EECXzsvaQO1rmi4p7KW8JrgtFctctwJn6Q3I29Wb1YGSH7vRpAJqSsUyb1FFuvT2mQTert6sDVTt9GrXL1e7LU0vc7uA2FValPO5s6s7hwcqmjna8ao/Xr/8OjrQ2rtYdQG6d7+5TVcH38V8U6N7kq5/W4h35r0+ffRJ2ndwLXyH+fY3GXjPCArPGcG87HKiWG/48pTu/VvzCx702d/to71Kk4OfKEan/InUM0NbOrHMpXoz2O0pVVp+OFy1venSOeGbVRGARAASAUgEIBGARAASAUgEIBGARAASAUgEIBGARAASAUgEIBGARAASAUgEIBGARAASAUgEIBGARAASAUgEIBGARAASAUgEIBGARAASAUgEIBGARAASAUgEIBGARAASAUgEIBGARAASAUgEIBGARAASAUgEIBGARAASAUgEIBGARAASAUgEIBGARAAS+R8R7sbHVJoPcwAAAABJRU5ErkJggg==" /><!-- --></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">TxnAggregated &lt;-<span class="st"> </span><span class="kw">aggregate</span>(transactions<span class="op">$</span>transactionID, <span class="dt">by =</span> <span class="kw">list</span>(transactions<span class="op">$</span>dayNum), length)</a>
+<a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">plot</span>(TxnAggregated, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ann =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 </div>
 <div id="build-final-data" class="section level3">
 <h3>2.4 Build final data</h3>
@@ -388,69 +418,84 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <li><strong>Pareto</strong>. This defines the percentage allocation and is a numeric data type. This argument takes the form of c(x,y) where x and y are numeric and their sum is 100. If we set Pareto to c(80,20), it then allocates 80 percent of factor1 to 20 percent of factor 2. This is based on a well-known concept of Pareto principle.</li>
 </ul>
 <p>Let us now allocate transactions to customers first by using the following code.</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1">customer2transaction &lt;-<span class="st"> </span><span class="kw">buildPareto</span>(customers, transactions<span class="op">$</span>transactionID, <span class="dt">pareto =</span> <span class="kw">c</span>(<span class="dv">80</span>,<span class="dv">20</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">customer2transaction &lt;-<span class="st"> </span><span class="kw">buildPareto</span>(customers, transactions<span class="op">$</span>transactionID, <span class="dt">pareto =</span> <span class="kw">c</span>(<span class="dv">80</span>,<span class="dv">20</span>))</a></code></pre></div>
 <p>Assign readable names to the output by using the following code.</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1"><span class="kw">names</span>(customer2transaction) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">'transactionID'</span>, <span class="st">'customer'</span>)</a>
-<a class="sourceLine" id="cb7-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb7-3" data-line-number="3"><span class="co">#inspect the output</span></a>
-<a class="sourceLine" id="cb7-4" data-line-number="4"><span class="kw">print</span>(<span class="kw">head</span>(customer2transaction))</a>
-<a class="sourceLine" id="cb7-5" data-line-number="5"><span class="co">#&gt;   transactionID customer</span></a>
-<a class="sourceLine" id="cb7-6" data-line-number="6"><span class="co">#&gt; 1    txn-210-21  cust023</span></a>
-<a class="sourceLine" id="cb7-7" data-line-number="7"><span class="co">#&gt; 2     txn-44-01  cust054</span></a>
-<a class="sourceLine" id="cb7-8" data-line-number="8"><span class="co">#&gt; 3    txn-298-26  cust062</span></a>
-<a class="sourceLine" id="cb7-9" data-line-number="9"><span class="co">#&gt; 4    txn-352-18  cust054</span></a>
-<a class="sourceLine" id="cb7-10" data-line-number="10"><span class="co">#&gt; 5    txn-100-24  cust061</span></a>
-<a class="sourceLine" id="cb7-11" data-line-number="11"><span class="co">#&gt; 6      txn-4-15  cust017</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1"><span class="kw">names</span>(customer2transaction) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">'transactionID'</span>, <span class="st">'customer'</span>)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#inspect the output</span></a>
+<a class="sourceLine" id="cb9-4" data-line-number="4"><span class="kw">print</span>(<span class="kw">head</span>(customer2transaction))</a>
+<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt;   transactionID customer</span></a>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; 1    txn-164-08  cust098</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; 2    txn-358-46  cust029</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt; 3    txn-328-08  cust037</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt; 4    txn-226-62  cust017</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt; 5    txn-280-16  cust029</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt; 6    txn-304-04  cust049</span></a></code></pre></div>
 </div>
 <div id="allocate-products-to-transactions" class="section level4">
 <h4>2.4.2 Allocate products to transactions</h4>
 <p>Now, using similar step as mentioned above, allocate transactions to products using following code.</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" data-line-number="1">product2transaction &lt;-<span class="st"> </span><span class="kw">buildPareto</span>(products<span class="op">$</span>SKU,transactions<span class="op">$</span>transactionID,<span class="dt">pareto =</span> <span class="kw">c</span>(<span class="dv">70</span>,<span class="dv">30</span>))</a>
-<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="kw">names</span>(product2transaction) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">'transactionID'</span>, <span class="st">'SKU'</span>)</a>
-<a class="sourceLine" id="cb8-3" data-line-number="3"></a>
-<a class="sourceLine" id="cb8-4" data-line-number="4"><span class="co">#inspect the output</span></a>
-<a class="sourceLine" id="cb8-5" data-line-number="5"><span class="kw">print</span>(<span class="kw">head</span>(product2transaction))</a>
-<a class="sourceLine" id="cb8-6" data-line-number="6"><span class="co">#&gt;   transactionID   SKU</span></a>
-<a class="sourceLine" id="cb8-7" data-line-number="7"><span class="co">#&gt; 1    txn-134-12 sku05</span></a>
-<a class="sourceLine" id="cb8-8" data-line-number="8"><span class="co">#&gt; 2    txn-313-31 sku05</span></a>
-<a class="sourceLine" id="cb8-9" data-line-number="9"><span class="co">#&gt; 3    txn-305-20 sku09</span></a>
-<a class="sourceLine" id="cb8-10" data-line-number="10"><span class="co">#&gt; 4    txn-198-03 sku01</span></a>
-<a class="sourceLine" id="cb8-11" data-line-number="11"><span class="co">#&gt; 5    txn-282-20 sku01</span></a>
-<a class="sourceLine" id="cb8-12" data-line-number="12"><span class="co">#&gt; 6    txn-178-21 sku01</span></a></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">product2transaction &lt;-<span class="st"> </span><span class="kw">buildPareto</span>(products<span class="op">$</span>SKU,transactions<span class="op">$</span>transactionID,<span class="dt">pareto =</span> <span class="kw">c</span>(<span class="dv">70</span>,<span class="dv">30</span>))</a>
+<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">names</span>(product2transaction) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">'transactionID'</span>, <span class="st">'SKU'</span>)</a>
+<a class="sourceLine" id="cb10-3" data-line-number="3"></a>
+<a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#inspect the output</span></a>
+<a class="sourceLine" id="cb10-5" data-line-number="5"><span class="kw">print</span>(<span class="kw">head</span>(product2transaction))</a>
+<a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt;   transactionID   SKU</span></a>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt; 1     txn-254-1 sku04</span></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">#&gt; 2    txn-322-18 sku04</span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt; 3     txn-58-31 sku06</span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt; 4    txn-303-37 sku06</span></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt; 5    txn-208-43 sku06</span></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt; 6    txn-290-27 sku04</span></a></code></pre></div>
+</div>
+<div id="combine-customers-and-transactions-data" class="section level4">
+<h4>2.4.3 Combine customers and transactions data</h4>
+<p>The following code brings together transactions, products and customers into one dataframe.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">df1 &lt;-<span class="st"> </span><span class="kw">merge</span>(<span class="dt">x =</span> customer2transaction, <span class="dt">y =</span> product2transaction, <span class="dt">by =</span> <span class="st">&quot;transactionID&quot;</span>)</a>
+<a class="sourceLine" id="cb11-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb11-3" data-line-number="3">df2 &lt;-<span class="st"> </span><span class="kw">merge</span>(<span class="dt">x =</span> df1, <span class="dt">y =</span> transactions, <span class="dt">by =</span> <span class="st">&quot;transactionID&quot;</span>, <span class="dt">all.x =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb11-4" data-line-number="4"></a>
+<a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">#inspect the output</span></a>
+<a class="sourceLine" id="cb11-6" data-line-number="6"><span class="kw">print</span>(<span class="kw">head</span>(df2))</a>
+<a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt;   transactionID customer   SKU dayNum mthNum</span></a>
+<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; 1      txn-1-01  cust057 sku01      1      1</span></a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; 2      txn-1-02  cust009 sku08      1      1</span></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt; 3      txn-1-03  cust046 sku06      1      1</span></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt; 4      txn-1-04  cust064 sku07      1      1</span></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; 5      txn-1-05  cust009 sku03      1      1</span></a>
+<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co">#&gt; 6      txn-1-06  cust091 sku04      1      1</span></a></code></pre></div>
 </div>
 <div id="final-data" class="section level4">
 <h4>2.4.3 Final data</h4>
-<p>Now, using a similar step as mentioned above, allocate transactions to products using the following code.</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">df1 &lt;-<span class="st"> </span><span class="kw">merge</span>(<span class="dt">x =</span> customer2transaction, <span class="dt">y =</span> product2transaction, <span class="dt">by =</span> <span class="st">&quot;transactionID&quot;</span>)</a>
-<a class="sourceLine" id="cb9-2" data-line-number="2"></a>
-<a class="sourceLine" id="cb9-3" data-line-number="3">dfFinal &lt;-<span class="st"> </span><span class="kw">merge</span>(<span class="dt">x =</span> df1, <span class="dt">y =</span> transactions, <span class="dt">by =</span> <span class="st">&quot;transactionID&quot;</span>, <span class="dt">all.x =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb9-4" data-line-number="4"></a>
-<a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#inspect the output</span></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="kw">print</span>(<span class="kw">head</span>(dfFinal))</a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt;   transactionID customer   SKU dayNum mthNum</span></a>
-<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt; 1      txn-1-01  cust054 sku01      1      1</span></a>
-<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt; 2      txn-1-02  cust013 sku07      1      1</span></a>
-<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt; 3      txn-1-03  cust087 sku05      1      1</span></a>
-<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt; 4      txn-1-04  cust014 sku09      1      1</span></a>
-<a class="sourceLine" id="cb9-12" data-line-number="12"><span class="co">#&gt; 5      txn-1-05  cust066 sku09      1      1</span></a>
-<a class="sourceLine" id="cb9-13" data-line-number="13"><span class="co">#&gt; 6      txn-1-06  cust003 sku01      1      1</span></a></code></pre></div>
+<p>We can add additional data such as customer name using the code below.</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">dfFinal &lt;-<span class="st"> </span><span class="kw">merge</span>(<span class="dt">x =</span> df2, <span class="dt">y =</span> customer2name, <span class="dt">by.x =</span> <span class="st">&quot;customer&quot;</span>, <span class="dt">by.y =</span> <span class="st">&quot;customers&quot;</span>, <span class="dt">all.x =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"></a>
+<a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co">#inspect the output</span></a>
+<a class="sourceLine" id="cb12-4" data-line-number="4"><span class="kw">print</span>(<span class="kw">head</span>(dfFinal))</a>
+<a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt;   customer transactionID   SKU dayNum mthNum customerName</span></a>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt; 1  cust001     txn-88-31 sku04     88      3      alinden</span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; 2  cust001    txn-271-46 sku01    271      9      alinden</span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; 3  cust001     txn-254-4 sku01    254      9      alinden</span></a>
+<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; 4  cust001    txn-321-54 sku02    321     11      alinden</span></a>
+<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="co">#&gt; 5  cust001    txn-124-29 sku09    124      5      alinden</span></a>
+<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="co">#&gt; 6  cust001     txn-39-11 sku09     39      2      alinden</span></a></code></pre></div>
 <p>Thus, we have the final data set with transactions, customers and products.</p>
 </div>
 </div>
 </div>
 <div id="interpret-the-results" class="section level2">
 <h2>2.Interpret the results</h2>
-<p>The column names of the final data frame can be interpreted as follows. + Each row is a transaction and the data frame has all the transactions for a year i.e 365 days. + <strong>transactionID</strong> is the unique identifier for that transaction. + <strong>customer</strong> is the unique customer identifier. This is the customer who made that transaction. + <strong>SKU</strong> is the product that was bought in that transaction. + <strong>dayNum</strong> is the day number in the year. There would be 365 unique dayNum in the data frame. + <strong>mthNum</strong> is the month number. This ranges from 1 to 12 and represents January to December respectively.</p>
+<p>The column names of the final data frame can be interpreted as follows. + Each row is a transaction and the data frame has all the transactions for a year i.e 365 days. + <strong>transactionID</strong> is the unique identifier for that transaction. + <strong>customer</strong> is the unique customer identifier. This is the customer who made that transaction. + <strong>SKU</strong> is the product that was bought in that transaction. + <strong>dayNum</strong> is the day number in the year. There would be 365 unique dayNum in the data frame. + <strong>mthNum</strong> is the month number. This ranges from 1 to 12 and represents January to December respectively. + <strong>customerName</strong> is name of the customer.</p>
 <p>Let us visualize the results to understand the data distribution.</p>
 <p>Below is a view of the sum of transactions by each day.</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1">aggregatedDataDay &lt;-<span class="st"> </span><span class="kw">aggregate</span>(dfFinal<span class="op">$</span>transactionID, <span class="dt">by =</span> <span class="kw">list</span>(dfFinal<span class="op">$</span>dayNum), length)</a>
-<a class="sourceLine" id="cb10-2" data-line-number="2"><span class="kw">plot</span>(aggregatedDataDay, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ann =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">aggregatedDataDay &lt;-<span class="st"> </span><span class="kw">aggregate</span>(dfFinal<span class="op">$</span>transactionID, <span class="dt">by =</span> <span class="kw">list</span>(dfFinal<span class="op">$</span>dayNum), length)</a>
+<a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">plot</span>(aggregatedDataDay, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ann =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 <p>Below is a view of the sum of transactions by each month.</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" data-line-number="1">aggregatedDataMth &lt;-<span class="st"> </span><span class="kw">aggregate</span>(dfFinal<span class="op">$</span>transactionID, <span class="dt">by =</span> <span class="kw">list</span>(dfFinal<span class="op">$</span>mthNum), length)</a>
-<a class="sourceLine" id="cb11-2" data-line-number="2">aggregatedDataMthSorted &lt;-<span class="st"> </span>aggregatedDataMth[<span class="kw">order</span>(aggregatedDataMth<span class="op">$</span>Group<span class="fl">.1</span>),]</a>
-<a class="sourceLine" id="cb11-3" data-line-number="3"><span class="kw">plot</span>(aggregatedDataMthSorted, <span class="dt">ann =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">aggregatedDataMth &lt;-<span class="st"> </span><span class="kw">aggregate</span>(dfFinal<span class="op">$</span>transactionID, <span class="dt">by =</span> <span class="kw">list</span>(dfFinal<span class="op">$</span>mthNum), length)</a>
+<a class="sourceLine" id="cb14-2" data-line-number="2">aggregatedDataMthSorted &lt;-<span class="st"> </span>aggregatedDataMth[<span class="kw">order</span>(aggregatedDataMth<span class="op">$</span>Group<span class="fl">.1</span>),]</a>
+<a class="sourceLine" id="cb14-3" data-line-number="3"><span class="kw">plot</span>(aggregatedDataMthSorted, <span class="dt">ann =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2>References</h2>
