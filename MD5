@@ -1,9 +1,10 @@
-bc6bcb04d039b6207c4b757384dbeaba *DESCRIPTION
+007cde3632c94baeca1e50c9c47ee0b4 *DESCRIPTION
 0c6eb1847cc60ce6198dd118ca0c1897 *LICENSE
 02213fea947072666712c87036bd87d8 *NAMESPACE
+b1d4605f1a8b915adb3e19ac9a04e40d *NEWS.md
 ac7e8d0c87060018eb01e4654fb22c3c *R/buildDistr.R
 eada4a23ddd4be96f8befebf4c5b54d0 *R/buildName.R
-6bd9ea92c8791746d824eef32f9b9e77 *R/buildNames.R
+09353ab655e7480ae712f2cf9bc7cf76 *R/buildNames.R
 9e0475d955b83caea478cedb27e3309b *R/buildOutliers.R
 0264064f5ab0c225480516a44ec918d0 *R/buildPareto.R
 a75c15cddf767332af17d6997183ea8d *R/buildProd.R
@@ -14,12 +15,12 @@ c54fcfed22142b3af6b4d2d2dd131d2c *R/genFirstPairs.R
 18a44517fe84cc5dff14b60463e9cc86 *R/genTrans.R
 8d53141fcd157b8cee9865f62de1bd9a *R/genTriples.R
 2f7cb1d8288d4dcfb250db488b8a96e8 *R/missingArgHandler.R
-e11cf5d1cbdf5aabadd3cd674e27af10 *R/nextAlphaProb.R
+5f93f2fc11c9e388ff040a9a315777d0 *R/nextAlphaProb.R
 4fb34a02f188d4ae046e50641cc4d63a *R/sysdata.rda
 21b630e0984e128dbec9802dd3a37a10 *build/vignette.rds
 330ad0493245a69b24c97e31b53f2366 *inst/doc/introduction_to_conjurer.R
 bcebc62cfc643d11b8014e7999f41f07 *inst/doc/introduction_to_conjurer.Rmd
-c86f146a818a194274c7a8886e6d917c *inst/doc/introduction_to_conjurer.html
+58754f27f34f3f94da37abd236933b61 *inst/doc/introduction_to_conjurer.html
 39a256ccbf7f0dd08bcdc047427ffab6 *man/buildCust.Rd
 6219bb3098fb89eeabcedd79175f757b *man/buildDistr.Rd
 ad69ade58f77d3168e488bcb654b8cbe *man/buildName.Rd

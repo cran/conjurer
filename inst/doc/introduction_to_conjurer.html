@@ -12,7 +12,7 @@
 
 <meta name="author" content="Sidharth Macherla" />
 
-<meta name="date" content="2020-03-14" />
+<meta name="date" content="2020-03-22" />
 
 <title>Introduction to conjurer</title>
 
@@ -303,7 +303,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 
 <h1 class="title toc-ignore">Introduction to conjurer</h1>
 <h4 class="author">Sidharth Macherla</h4>
-<h4 class="date">2020-03-14</h4>
+<h4 class="date">2020-03-22</h4>
 
 
 
@@ -342,12 +342,12 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb3-4" data-line-number="4"><span class="kw">colnames</span>(custNames) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;customerName&quot;</span>)</a>
 <a class="sourceLine" id="cb3-5" data-line-number="5"><span class="kw">print</span>(<span class="kw">head</span>(custNames))</a>
 <a class="sourceLine" id="cb3-6" data-line-number="6"><span class="co">#&gt;   customerName</span></a>
-<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 1      alinden</span></a>
-<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 2        salee</span></a>
-<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 3       ballen</span></a>
-<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; 4       daliel</span></a>
-<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; 5      emenatr</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; 6        dalle</span></a></code></pre></div>
+<a class="sourceLine" id="cb3-7" data-line-number="7"><span class="co">#&gt; 1      belarie</span></a>
+<a class="sourceLine" id="cb3-8" data-line-number="8"><span class="co">#&gt; 2        lenne</span></a>
+<a class="sourceLine" id="cb3-9" data-line-number="9"><span class="co">#&gt; 3      jerrayl</span></a>
+<a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; 4        salin</span></a>
+<a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt; 5      karrale</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt; 6        sanal</span></a></code></pre></div>
 </div>
 <div id="assign-customer-name-to-customer-id" class="section level4">
 <h4>2.2.2 Assign customer name to customer ID</h4>
@@ -356,12 +356,12 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb4-2" data-line-number="2"><span class="co">#set column heading</span></a>
 <a class="sourceLine" id="cb4-3" data-line-number="3"><span class="kw">print</span>(<span class="kw">head</span>(customer2name))</a>
 <a class="sourceLine" id="cb4-4" data-line-number="4"><span class="co">#&gt;   customers customerName</span></a>
-<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; 1   cust001      alinden</span></a>
-<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 2   cust002        salee</span></a>
-<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 3   cust003       ballen</span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 4   cust004       daliel</span></a>
-<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 5   cust005      emenatr</span></a>
-<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 6   cust006        dalle</span></a></code></pre></div>
+<a class="sourceLine" id="cb4-5" data-line-number="5"><span class="co">#&gt; 1   cust001      belarie</span></a>
+<a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; 2   cust002        lenne</span></a>
+<a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt; 3   cust003      jerrayl</span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt; 4   cust004        salin</span></a>
+<a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt; 5   cust005      karrale</span></a>
+<a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt; 6   cust006        sanal</span></a></code></pre></div>
 </div>
 </div>
 <div id="build-products" class="section level3">
@@ -375,12 +375,12 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">products &lt;-<span class="st"> </span><span class="kw">buildProd</span>(<span class="dt">numOfProd =</span> <span class="dv">10</span>, <span class="dt">minPrice =</span> <span class="dv">5</span>, <span class="dt">maxPrice =</span> <span class="dv">50</span>)</a>
 <a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">print</span>(<span class="kw">head</span>(products))</a>
 <a class="sourceLine" id="cb5-3" data-line-number="3"><span class="co">#&gt;     SKU Price</span></a>
-<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; 1 sku01 40.64</span></a>
-<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; 2 sku02 21.08</span></a>
-<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; 3 sku03 10.22</span></a>
-<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 4 sku04 16.23</span></a>
-<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 5 sku05 34.40</span></a>
-<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 6 sku06 20.19</span></a></code></pre></div>
+<a class="sourceLine" id="cb5-4" data-line-number="4"><span class="co">#&gt; 1 sku01 24.97</span></a>
+<a class="sourceLine" id="cb5-5" data-line-number="5"><span class="co">#&gt; 2 sku02 26.74</span></a>
+<a class="sourceLine" id="cb5-6" data-line-number="6"><span class="co">#&gt; 3 sku03 47.66</span></a>
+<a class="sourceLine" id="cb5-7" data-line-number="7"><span class="co">#&gt; 4 sku04 25.34</span></a>
+<a class="sourceLine" id="cb5-8" data-line-number="8"><span class="co">#&gt; 5 sku05 10.61</span></a>
+<a class="sourceLine" id="cb5-9" data-line-number="9"><span class="co">#&gt; 6 sku06 27.88</span></a></code></pre></div>
 </div>
 <div id="build-transactions" class="section level3">
 <h3>2.3 Build transactions</h3>
@@ -405,7 +405,7 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <p>Visualize generated transactions by using</p>
 <div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" data-line-number="1">TxnAggregated &lt;-<span class="st"> </span><span class="kw">aggregate</span>(transactions<span class="op">$</span>transactionID, <span class="dt">by =</span> <span class="kw">list</span>(transactions<span class="op">$</span>dayNum), length)</a>
 <a class="sourceLine" id="cb7-2" data-line-number="2"><span class="kw">plot</span>(TxnAggregated, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ann =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 </div>
 <div id="build-final-data" class="section level3">
 <h3>2.4 Build final data</h3>
@@ -425,12 +425,12 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb9-3" data-line-number="3"><span class="co">#inspect the output</span></a>
 <a class="sourceLine" id="cb9-4" data-line-number="4"><span class="kw">print</span>(<span class="kw">head</span>(customer2transaction))</a>
 <a class="sourceLine" id="cb9-5" data-line-number="5"><span class="co">#&gt;   transactionID customer</span></a>
-<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; 1    txn-164-08  cust098</span></a>
-<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; 2    txn-358-46  cust029</span></a>
-<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt; 3    txn-328-08  cust037</span></a>
-<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt; 4    txn-226-62  cust017</span></a>
-<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt; 5    txn-280-16  cust029</span></a>
-<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt; 6    txn-304-04  cust049</span></a></code></pre></div>
+<a class="sourceLine" id="cb9-6" data-line-number="6"><span class="co">#&gt; 1    txn-332-13  cust041</span></a>
+<a class="sourceLine" id="cb9-7" data-line-number="7"><span class="co">#&gt; 2    txn-363-01  cust051</span></a>
+<a class="sourceLine" id="cb9-8" data-line-number="8"><span class="co">#&gt; 3    txn-351-05  cust091</span></a>
+<a class="sourceLine" id="cb9-9" data-line-number="9"><span class="co">#&gt; 4    txn-338-17  cust079</span></a>
+<a class="sourceLine" id="cb9-10" data-line-number="10"><span class="co">#&gt; 5    txn-245-06  cust027</span></a>
+<a class="sourceLine" id="cb9-11" data-line-number="11"><span class="co">#&gt; 6     txn-32-22  cust073</span></a></code></pre></div>
 </div>
 <div id="allocate-products-to-transactions" class="section level4">
 <h4>2.4.2 Allocate products to transactions</h4>
@@ -441,12 +441,12 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb10-4" data-line-number="4"><span class="co">#inspect the output</span></a>
 <a class="sourceLine" id="cb10-5" data-line-number="5"><span class="kw">print</span>(<span class="kw">head</span>(product2transaction))</a>
 <a class="sourceLine" id="cb10-6" data-line-number="6"><span class="co">#&gt;   transactionID   SKU</span></a>
-<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt; 1     txn-254-1 sku04</span></a>
-<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">#&gt; 2    txn-322-18 sku04</span></a>
-<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt; 3     txn-58-31 sku06</span></a>
-<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt; 4    txn-303-37 sku06</span></a>
-<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt; 5    txn-208-43 sku06</span></a>
-<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt; 6    txn-290-27 sku04</span></a></code></pre></div>
+<a class="sourceLine" id="cb10-7" data-line-number="7"><span class="co">#&gt; 1      txn-4-15 sku05</span></a>
+<a class="sourceLine" id="cb10-8" data-line-number="8"><span class="co">#&gt; 2    txn-115-10 sku07</span></a>
+<a class="sourceLine" id="cb10-9" data-line-number="9"><span class="co">#&gt; 3    txn-310-11 sku03</span></a>
+<a class="sourceLine" id="cb10-10" data-line-number="10"><span class="co">#&gt; 4    txn-358-38 sku03</span></a>
+<a class="sourceLine" id="cb10-11" data-line-number="11"><span class="co">#&gt; 5     txn-18-11 sku05</span></a>
+<a class="sourceLine" id="cb10-12" data-line-number="12"><span class="co">#&gt; 6    txn-246-18 sku07</span></a></code></pre></div>
 </div>
 <div id="combine-customers-and-transactions-data" class="section level4">
 <h4>2.4.3 Combine customers and transactions data</h4>
@@ -458,12 +458,12 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb11-5" data-line-number="5"><span class="co">#inspect the output</span></a>
 <a class="sourceLine" id="cb11-6" data-line-number="6"><span class="kw">print</span>(<span class="kw">head</span>(df2))</a>
 <a class="sourceLine" id="cb11-7" data-line-number="7"><span class="co">#&gt;   transactionID customer   SKU dayNum mthNum</span></a>
-<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; 1      txn-1-01  cust057 sku01      1      1</span></a>
-<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; 2      txn-1-02  cust009 sku08      1      1</span></a>
-<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt; 3      txn-1-03  cust046 sku06      1      1</span></a>
-<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt; 4      txn-1-04  cust064 sku07      1      1</span></a>
-<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; 5      txn-1-05  cust009 sku03      1      1</span></a>
-<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co">#&gt; 6      txn-1-06  cust091 sku04      1      1</span></a></code></pre></div>
+<a class="sourceLine" id="cb11-8" data-line-number="8"><span class="co">#&gt; 1      txn-1-01  cust062 sku05      1      1</span></a>
+<a class="sourceLine" id="cb11-9" data-line-number="9"><span class="co">#&gt; 2      txn-1-02  cust041 sku07      1      1</span></a>
+<a class="sourceLine" id="cb11-10" data-line-number="10"><span class="co">#&gt; 3      txn-1-03  cust051 sku07      1      1</span></a>
+<a class="sourceLine" id="cb11-11" data-line-number="11"><span class="co">#&gt; 4      txn-1-04  cust093 sku07      1      1</span></a>
+<a class="sourceLine" id="cb11-12" data-line-number="12"><span class="co">#&gt; 5      txn-1-05  cust001 sku02      1      1</span></a>
+<a class="sourceLine" id="cb11-13" data-line-number="13"><span class="co">#&gt; 6      txn-1-06  cust084 sku05      1      1</span></a></code></pre></div>
 </div>
 <div id="final-data" class="section level4">
 <h4>2.4.3 Final data</h4>
@@ -473,12 +473,12 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <a class="sourceLine" id="cb12-3" data-line-number="3"><span class="co">#inspect the output</span></a>
 <a class="sourceLine" id="cb12-4" data-line-number="4"><span class="kw">print</span>(<span class="kw">head</span>(dfFinal))</a>
 <a class="sourceLine" id="cb12-5" data-line-number="5"><span class="co">#&gt;   customer transactionID   SKU dayNum mthNum customerName</span></a>
-<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt; 1  cust001     txn-88-31 sku04     88      3      alinden</span></a>
-<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; 2  cust001    txn-271-46 sku01    271      9      alinden</span></a>
-<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; 3  cust001     txn-254-4 sku01    254      9      alinden</span></a>
-<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; 4  cust001    txn-321-54 sku02    321     11      alinden</span></a>
-<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="co">#&gt; 5  cust001    txn-124-29 sku09    124      5      alinden</span></a>
-<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="co">#&gt; 6  cust001     txn-39-11 sku09     39      2      alinden</span></a></code></pre></div>
+<a class="sourceLine" id="cb12-6" data-line-number="6"><span class="co">#&gt; 1  cust001    txn-272-10 sku05    272      9      belarie</span></a>
+<a class="sourceLine" id="cb12-7" data-line-number="7"><span class="co">#&gt; 2  cust001     txn-143-3 sku07    143      5      belarie</span></a>
+<a class="sourceLine" id="cb12-8" data-line-number="8"><span class="co">#&gt; 3  cust001    txn-249-31 sku03    249      9      belarie</span></a>
+<a class="sourceLine" id="cb12-9" data-line-number="9"><span class="co">#&gt; 4  cust001    txn-153-18 sku05    153      6      belarie</span></a>
+<a class="sourceLine" id="cb12-10" data-line-number="10"><span class="co">#&gt; 5  cust001    txn-290-12 sku07    290     10      belarie</span></a>
+<a class="sourceLine" id="cb12-11" data-line-number="11"><span class="co">#&gt; 6  cust001    txn-176-08 sku01    176      6      belarie</span></a></code></pre></div>
 <p>Thus, we have the final data set with transactions, customers and products.</p>
 </div>
 </div>
@@ -490,12 +490,12 @@ code > span.fu { color: #900; font-weight: bold; }  code > span.er { color: #a61
 <p>Below is a view of the sum of transactions by each day.</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1">aggregatedDataDay &lt;-<span class="st"> </span><span class="kw">aggregate</span>(dfFinal<span class="op">$</span>transactionID, <span class="dt">by =</span> <span class="kw">list</span>(dfFinal<span class="op">$</span>dayNum), length)</a>
 <a class="sourceLine" id="cb13-2" data-line-number="2"><span class="kw">plot</span>(aggregatedDataDay, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>, <span class="dt">ann =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 <p>Below is a view of the sum of transactions by each month.</p>
 <div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb14-1" data-line-number="1">aggregatedDataMth &lt;-<span class="st"> </span><span class="kw">aggregate</span>(dfFinal<span class="op">$</span>transactionID, <span class="dt">by =</span> <span class="kw">list</span>(dfFinal<span class="op">$</span>mthNum), length)</a>
 <a class="sourceLine" id="cb14-2" data-line-number="2">aggregatedDataMthSorted &lt;-<span class="st"> </span>aggregatedDataMth[<span class="kw">order</span>(aggregatedDataMth<span class="op">$</span>Group<span class="fl">.1</span>),]</a>
 <a class="sourceLine" id="cb14-3" data-line-number="3"><span class="kw">plot</span>(aggregatedDataMthSorted, <span class="dt">ann =</span> <span class="ot">FALSE</span>)</a></code></pre></div>
-<p><img src="data:image/png;base64,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" /><!-- --></p>
+<p><img src="data:image/png;base64,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" /><!-- --></p>
 </div>
 <div id="references" class="section level2 unnumbered">
 <h2>References</h2>
