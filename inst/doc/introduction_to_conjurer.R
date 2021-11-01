@@ -37,6 +37,21 @@ customer2age <- cbind(customers, custAge)
 print(head(customer2age))
 
 ## ---- eval=TRUE, echo=TRUE, results='markup'----------------------------------
+parts <- list(c("+91","+44","+64"), c("("), c(491,324,211), c(")"), c(7821:8324))
+probs <- list(c(0.25,0.25,0.50), c(1), c(0.30,0.60,0.10), c(1), c())
+custPhoneNumbers <- as.data.frame(buildPattern(n=100,parts = parts, probs = probs))
+head(custPhoneNumbers)
+
+#set column heading
+colnames(custPhoneNumbers) <- c("customerPhone")
+print(head(custPhoneNumbers))
+
+## ---- eval=TRUE, echo=TRUE, results='markup'----------------------------------
+customer2phone <- cbind(customers, custPhoneNumbers)
+#set column heading
+print(head(customer2phone))
+
+## ---- eval=TRUE, echo=TRUE, results='markup'----------------------------------
 products <- buildProd(numOfProd = 10, minPrice = 5, maxPrice = 50)
 print(head(products))
 
@@ -107,8 +122,9 @@ print(head(df2))
 ## ---- eval=TRUE, echo=TRUE, results='markup'----------------------------------
 df3 <- merge(x = df2, y = customer2name, by.x = "customer", by.y = "customers", all.x = TRUE)
 df4 <- merge(x = df3, y = customer2age, by.x = "customer", by.y = "customers", all.x = TRUE)
-df5 <- merge(x = df4, y = products, by = "SKU", all.x = TRUE)
-dfFinal <- df5[,c("dayNum", "mthNum", "customer", "customerName", "customerAge", "transactionID", "SKU", "Price", "category","subcategory")]
+df5 <- merge(x = df4, y = customer2phone, by.x = "customer", by.y = "customers", all.x = TRUE)
+df6 <- merge(x = df5, y = products, by = "SKU", all.x = TRUE)
+dfFinal <- df6[,c("dayNum", "mthNum", "customer", "customerName", "customerAge", "customerPhone", "transactionID", "SKU", "Price", "category","subcategory")]
 
 
 #inspect the output
