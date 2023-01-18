@@ -1,7 +1,7 @@
-b0669e5901f9126f24f6382e228f5ce8 *DESCRIPTION
+9f8f9af72aab6505828fbf1a5ff0ac7d *DESCRIPTION
 0cb9ef79fb80f6276e16c1a55b1508d7 *LICENSE
 6e15838e7e69baf53370d47697bf31b8 *NAMESPACE
-5175a2513bfa4acad24a6a8073ffdc6b *NEWS.md
+9d6063774ab75a38cbb9c3f9c31a9bfc *NEWS.md
 fece046493fc39453054f2bb9253d839 *R/buildDistr.R
 e9aa23ba78ffa5eecaadd473f0b209e4 *R/buildHierarchy.R
 0853c615f689b79ca8952b7ad4224c03 *R/buildId.R
@@ -28,13 +28,13 @@ b81e3f188043747f4d38fd54d88bdafe *R/genMatrix.R
 255c31af137415edb1690741b4424ad0 *R/sysdata.rda
 9ba7e1fa91f63bc18ea4d7f6a5620baf *R/treeDf.R
 7d7a4e93cb0cbf0a6428e6658b0b16ae *R/uncovrApi.R
-204bd03690a55c075b6877ba3047dc09 *build/vignette.rds
+a0628b8d4f2dfd654413127d359038f3 *build/vignette.rds
 174b6fe8b0884edaab3c8245b97de9ea *inst/CITATION
 82fe39eb4156a9f1b50afb1d70a316fb *inst/doc/industry_example.R
-541656d57d34afe82931743ccadbf742 *inst/doc/industry_example.Rmd
-de5ff952bc9480eb360a4afbb7d9c15f *inst/doc/industry_example.html
+2dbca4d2f983e91d0155c396d352371b *inst/doc/industry_example.Rmd
+709980cbd3bfab3057feef8292e7ac1b *inst/doc/industry_example.html
 25fd7adf20170b8a14daa0b0bac3ade7 *inst/doc/introduction_to_conjurer.R
-459f010bd85e1d1e6131f2337c5c4b55 *inst/doc/introduction_to_conjurer.Rmd
+37826d13bebf8a3b0561478ea0c0fd8a *inst/doc/introduction_to_conjurer.Rmd
 42eddcb295a7230e516b38fcc89f87ec *inst/doc/introduction_to_conjurer.html
 8ab549f78dc7d99dcc377627862f2cdb *man/buildCust.Rd
 463b655113e240cf5f7b7ca30214e403 *man/buildDistr.Rd
@@ -62,5 +62,5 @@ a927561f655ecce7e4d9ac5d2060bd82 *man/genPattern.Rd
 e7e556786d1fdbe15a5daac425a4dbc8 *man/treeDf.Rd
 61dfbe164793ad52652fc89809e63fcb *man/uncovrApi.Rd
 1e65dbb799130f29702da3f234b48dac *vignettes/bibliography.bib
-541656d57d34afe82931743ccadbf742 *vignettes/industry_example.Rmd
-459f010bd85e1d1e6131f2337c5c4b55 *vignettes/introduction_to_conjurer.Rmd
+2dbca4d2f983e91d0155c396d352371b *vignettes/industry_example.Rmd
+37826d13bebf8a3b0561478ea0c0fd8a *vignettes/introduction_to_conjurer.Rmd

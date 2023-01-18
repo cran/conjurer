@@ -8,7 +8,7 @@ output:
   html_document:
     number_sections: FALSE
 vignette: >
-  %\VignetteIndexEntry{Industry Example}
+  %\VignetteIndexEntry{Introduction to conjurer}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
